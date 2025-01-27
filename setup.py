@@ -80,6 +80,11 @@ class System:
 				print(x);
 		except OSError as error:
 			print(error);
+	def listener(port):
+		try:
+			os.system(f"nc -lvp {port}")
+		except OSError as error:
+			print(error);
 def sss(number):
 	if(number == 1):
 		ban_1()
@@ -98,6 +103,13 @@ class Consola(cmd.Cmd):
 	def do_ls(self, arg):
 		"""List directory"""
 		System.lister();
+	def do_listen(self, arg):
+		"""
+		listen in port
+		command:
+		listen <portnumber>
+		"""
+		System.listener(arg);
 ran = random.choice([1, 2, 3]);
 if __name__ == '__main__':
 	sss(ran)
